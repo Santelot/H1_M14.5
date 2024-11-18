@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M14.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para aprender y explorar habilidades de prompting en IA.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy trabajaremos en un proyecto que nos ayudará a descubrir cómo podemos usar la IA para analizar reportes médicos y extraer patrones importantes. ¡Es una gran oportunidad para aplicar nuestras habilidades de prompting!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten hoy. Si están emocionados por explorar este reto, den una palmada en sus manos. Si necesitan un momento para enfocarse, crucen los brazos frente a su pecho por un segundo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por la oportunidad de aprender y usar herramientas avanzadas hoy. ¡Gracias por estar aquí, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos principales: 1. Aprender cómo analizar reportes médicos usando IA. 2. Identificar patrones clave en los efectos secundarios de medicamentos en adolescentes."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🧘 Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Meditación rápida para recargar energías y mejorar el enfoque.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Meditación Flash".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a hacer una pausa para centrarnos. Siéntense cómodos, cierren los ojos y enfoquen su atención en su respiración. Esto nos ayudará a despejar la mente antes de nuestro desafío."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Meditación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Muy bien, Genios. Esta breve pausa es ideal para refrescar nuestras mentes y mejorar nuestro enfoque. Ahora estamos listos para enfrentarnos al desafío con más claridad."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos y organización para la misión.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta misión trabajaremos en equipos de cuatro personas. Encuentren a tres compañeros y formen su equipo rápidamente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que están organizados, un representante de cada equipo pase al frente a recoger su Magic Tablet. Asegúrense de regresar rápido para seguir avanzando."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 40 minutos</div>
+        <div class="subtitle">Análisis de reportes médicos utilizando habilidades de prompting en IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Título e Introducción".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy asumiremos el rol de un equipo de investigación científica participando en un concurso nacional. Nuestro objetivo será analizar reportes médicos y descubrir patrones en los efectos secundarios de medicamentos en adolescentes. Utilizaremos nuestras habilidades de prompting para guiar a la IA y extraer información clave de reportes médicos no estructurados. ¡Este es un reto emocionante y lleno de aprendizajes!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 14 "Explicación del Desafío".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En este desafío, analizaremos datos no estructurados de reportes médicos usando IA para responder a una pregunta clave de investigación: ¿Cuáles son los efectos secundarios más comunes de un medicamento específico en adolescentes? Este proyecto no solo nos ayudará a desarrollar habilidades analíticas, sino que también nos permitirá entender cómo la IA puede ser una herramienta poderosa para procesar grandes volúmenes de información compleja."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 15 "Etapa 1: Objetivo de Investigación".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "La primera etapa consiste en entender claramente la pregunta de investigación y los datos que necesitamos. Nuestro objetivo será identificar los efectos secundarios más comunes del medicamento 'Allercure' en adolescentes de 13 a 18 años. Para lograrlo, debemos extraer información específica de los reportes médicos, como la edad, género, dosis, duración del uso y efectos secundarios observados. Esta etapa es crucial para establecer una base sólida para el análisis."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (3 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 17 "Etapa 2: Familiarización con Reportes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta etapa, revisaremos los reportes médicos proporcionados para entender su estructura y terminología. Identifiquen información relevante como los efectos secundarios y detalles del medicamento, pero también noten que los reportes contienen datos irrelevantes. Reconocer estas diferencias será clave para diseñar prompts efectivos en las siguientes etapas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (2 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 19 "Etapa 3: Diseño del Prompt".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora diseñaremos un prompt que guíe a la IA para extraer los datos necesarios de los reportes médicos. Nuestro prompt debe incluir un ejemplo claro del formato esperado, especificar los datos que queremos, y asegurarnos de que la IA entienda la importancia de la precisión y confidencialidad. Por ejemplo, podemos pedir que el resultado sea presentado en formato JSON para mantener la consistencia y facilitar el análisis."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (3 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1 minuto):</strong> Proyectar Diapositiva 21 "Etapa 4: Extracción de Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta etapa, usaremos el prompt diseñado para procesar los reportes médicos y extraer la información clave. Ingresen el prompt junto con un reporte al sistema, revisen los resultados y ajusten el prompt si es necesario. Recuerden que la precisión es esencial, así que revisen que todos los datos estén completos y correctamente organizados antes de pasar al siguiente reporte."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 23 "Etapa 5: Análisis de Datos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Con los datos extraídos, es hora de analizarlos. Organicen la información en una plantilla o tabla para identificar patrones. Por ejemplo, observen si ciertos efectos secundarios son más comunes en un género o si están relacionados con una dosis específica. Utilicen gráficos simples, como barras o diagramas, para visualizar los hallazgos y facilitar la interpretación de los datos. Todo ésto pueden pedírselo a ChatGPT, recuerden aprovechar la herramienta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (3 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1.5 minutos):</strong> Proyectar Diapositiva 25 "Etapa 6: Ética y Cumplimiento".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora reflexionemos sobre la importancia de manejar datos médicos con responsabilidad. Aunque los reportes que usamos son ficticios, es fundamental comprender que en el mundo real, la privacidad de los pacientes y la confidencialidad de sus datos son esenciales. Esto significa asegurarnos de que la información personal se mantenga anónima y nunca se utilice fuera del contexto autorizado. ¿Por qué creen que esto es tan importante en la investigación médica?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 14 (3 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 15 (1.5 minutos):</strong> Proyectar Diapositiva 27 "Etapa 7: Presentación y Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para finalizar, cada equipo presentará sus hallazgos al resto del grupo. Expliquen cómo estructuraron sus prompts, qué patrones identificaron en los efectos secundarios y cómo la IA los ayudó en este proceso. También reflexionen sobre qué aprendieron acerca de la importancia de los prompts bien diseñados y cómo se puede mejorar el uso de la IA en proyectos de investigación como este."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 16 (10 minutos):</strong> Proyectar Diapositiva 28 "Cronómetro".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 17 (1 minuto):</strong> Proyectar Diapositiva 29 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Excelente trabajo, Genios. Hoy logramos todos nuestros objetivos: diseñar prompts efectivos, analizar datos médicos utilizando IA, y reflexionar sobre la ética en la investigación. Cada paso que tomaron fortaleció su capacidad para manejar información compleja y trabajar de manera colaborativa. ¡Felicidades!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 18 (1 minuto):</strong> Proyectar Diapositiva 30 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Su trabajo hoy fue excepcional. No solo completaron una investigación científica utilizando IA, sino que también demostraron un compromiso con la ética y el aprendizaje. Por su esfuerzo, han ganado Mon-e. ¡Gran trabajo!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 0.5 minutos</div>
+        <div class="subtitle">Cerrar la misión ordenando y organizando el espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 31 "Honor de Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de despedirnos, tomémonos un momento para ordenar y recoger el espacio. Cada equipo, pase al frente y entreguen las Magic Tablets. ¡Gracias por su esfuerzo y compromiso hoy!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
